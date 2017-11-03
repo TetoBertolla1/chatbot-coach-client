@@ -6,6 +6,27 @@
 	<title>Live Chat</title>
 
 	<link rel="stylesheet" type="text/css" href="style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+      $.ajax({
+        type: 'POST',
+        url: 'http://127.0.0.1:9000',
+        crossDomain: true,
+        data: '{"some":"json"}',
+        dataType: 'json',
+        success: function(responseData, textStatus, jqXHR) {
+        var value = responseData.someKey;
+        },
+        error: function (responseData, textStatus, errorThrown) {
+        alert('POST failed.', errorThrown);
+        }
+      });
+    });
+});
+</script>
 </head>
 <body>
 <div class = "box">	
@@ -13,6 +34,7 @@
 
 	<div class = "outMsg">It is meant to look like facebook messenger.</div>
 	<div class = "outMsg">I think it looks fine.</div>
+	<button>Send</button>
 </div>
 </body>
 </html>
