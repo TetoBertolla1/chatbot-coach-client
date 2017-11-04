@@ -19,9 +19,11 @@ $(document).ready(function(){
         dataType: 'json',
         success: function(responseData, textStatus, jqXHR) {
         var value = responseData.someKey;
+        document.getElementById("showresulthere").innerHTML = JSON.stringify(responseData);
         },
         error: function (responseData, textStatus, errorThrown) {
-        alert('POST failed.', errorThrown);
+        alert(JSON.stringify(responseData));
+        document.getElementById("showresulthere").innerHTML = "ERROR"
         }
       });
     });
@@ -35,6 +37,7 @@ $(document).ready(function(){
 	<div class = "outMsg">It is meant to look like facebook messenger.</div>
 	<div class = "outMsg">I think it looks fine.</div>
 	<button>Send</button>
+	<p id="showresulthere">I HAVENT CHANGED</p>
 </div>
 </body>
 </html>
