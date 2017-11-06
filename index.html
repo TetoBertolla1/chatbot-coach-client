@@ -9,17 +9,27 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+function objectifyForm(formArray) {//serialize data function
+
+    var returnArray = {};
+    for (var i = 0; i < formArray.length; i++){
+      returnArray[formArray[i]['name']] = formArray[i]['value'];
+    }
+    return returnArray;
+}
+
 $(document).ready(function(){
     $("button").click(function(){
       $.ajax({
         type: 'POST',
         url: 'http://127.0.0.1:9000',
         crossDomain: true,
-        data: '{"some":"json"}',
+        data: JSON.stringify( objectifyForm( $('form').serializeArray() ) ),
         dataType: 'json',
         success: function(responseData, textStatus, jqXHR) {
         var value = responseData.someKey;
         document.getElementById("showresulthere").innerHTML = JSON.stringify(responseData);
+        $('form').find("input[type=text], textarea").val("");        
         },
         error: function (responseData, textStatus, errorThrown) {
         alert(JSON.stringify(responseData));
@@ -31,13 +41,20 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class = "box">	
-	<div class = "inMsg">This is a test HTML page.</div>
+  <div class = "chatWin">
+    <div class = "msgBox">	
+      <div class = "inMsg">This is a test HTML page.</div>
 
-	<div class = "outMsg">It is meant to look like facebook messenger.</div>
-	<div class = "outMsg">I think it looks fine.</div>
-	<button>Send</button>
-	<p id="showresulthere">I HAVENT CHANGED</p>
-</div>
+        <div class = "outMsg">It is meant to look like facebook messenger.</div>
+        <div class = "outMsg">I think it looks fine.</div>
+        <p id="showresulthere">I HAVENT CHANGED</p>
+    </div>
+    <div class = "forms">
+      <form>
+        <input id="message" type="text" name="message" placeholder="Type your message...">
+        <button type="button">Send</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
