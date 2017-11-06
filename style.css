@@ -3,14 +3,41 @@
 
 /* ---------- GENERAL ---------- */
 
-body {
-	margin: 0 auto;
-	padding: 0;
+html, body {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
-.box {
+.chatWin {
 	margin: 0 auto;
-	padding: 10% 20%;
-	background: #fefefe;
+	min-width: 411px;
+	width: 45%;
+	padding: 20px;
+	border: 3px solid black;
+	height: 90%;
+	position: relative;
+}
+
+.forms {
+	position: absolute;
+	width: 100%;
+	padding: 0 auto;
+	bottom: 0;
+	left: 0;
+	right: 100%;
+}
+
+input {
+	height: auto;
+	
+	padding: 5px;
+}
+
+button {
+	padding: 5px;
+	width: 20%;
 }
 
 .inMsg, .outMsg {
