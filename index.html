@@ -18,9 +18,6 @@ function objectifyForm(formArray) {//serialize data function
     return returnArray;
 }
 
-var ip = "<?php echo $_SERVER['SERVER_ADDR']; ?>";
-var sUrl = 'http://' + ip;
-
 $(document).ready(function(){
     $("button").click(function(){
       $.ajax({
