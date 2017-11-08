@@ -18,11 +18,14 @@ function objectifyForm(formArray) {//serialize data function
     return returnArray;
 }
 
+var ip = "<?php echo $_SERVER['SERVER_ADDR']; ?>";
+var sUrl = 'http://' + ip;
+
 $(document).ready(function(){
     $("button").click(function(){
       $.ajax({
         type: 'POST',
-        url: 'http://127.0.0.1:9000',
+        url: ("http://" + self.location.hostname + ":8000"),
         crossDomain: true,
         data: JSON.stringify( objectifyForm( $('form').serializeArray() ) ),
         dataType: 'json',
