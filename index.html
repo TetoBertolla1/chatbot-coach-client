@@ -28,7 +28,6 @@ $(document).ready(function(){
 			success: function(responseData, textStatus, jqXHR) {
 				var json = JSON.parse(responseData);
 				var value = json.message;
-				document.getElementById("showresulthere").innerHTML = JSON.stringify(responseData);
 				$("form").find("input[type=text], textarea").val("");
 				$(".msgBox").append("<div class = 'inMsg'>" + value + "</div>"); },
 			error: function (responseData, textStatus, errorThrown) {
