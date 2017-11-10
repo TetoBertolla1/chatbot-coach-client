@@ -11,50 +11,46 @@
 <script>
 function objectifyForm(formArray) {//serialize data function
 
-    var returnArray = {};
-    for (var i = 0; i < formArray.length; i++){
-      returnArray[formArray[i]['name']] = formArray[i]['value'];
-    }
-    return returnArray;
+	var returnArray = {};
+	for (var i = 0; i < formArray.length; i++){
+		returnArray[formArray[i]["name"]] = formArray[i]["value"];
+	}
+	return returnArray;
 }
 
 $(document).ready(function(){
-    $("button").click(function(){
-      $.ajax({
-        type: 'POST',
-        url: ("http://" + self.location.hostname + ":8000"),
-        crossDomain: true,
-        data: JSON.stringify( objectifyForm( $('form').serializeArray() ) ),
-        dataType: 'json',
-        success: function(responseData, textStatus, jqXHR) {
-        var value = responseData.someKey;
-        document.getElementById("showresulthere").innerHTML = JSON.stringify(responseData);
-        $('form').find("input[type=text], textarea").val("");        
-        },
-        error: function (responseData, textStatus, errorThrown) {
-        alert(JSON.stringify(responseData));
-        document.getElementById("showresulthere").innerHTML = "ERROR"
-        }
-      });
-    });
+	$("button").click(function(){
+		$(".msgBox").append("<div class = 'outMsg'>" + objectifyForm( $("form").serializeArray() ).message + "</div>"); $.ajax({ type: "POST",
+			url: ("http://" + self.location.hostname + ":8000"),
+			crossDomain: true,
+			data: JSON.stringify( objectifyForm( $("form").serializeArray() ) ),
+			dataType: "json",
+			success: function(responseData, textStatus, jqXHR) {
+				var json = JSON.parse(responseData);
+				var value = json.message;
+				document.getElementById("showresulthere").innerHTML = JSON.stringify(responseData);
+				$("form").find("input[type=text], textarea").val("");
+				$(".msgBox").append("<div class = 'inMsg'>" + value + "</div>"); },
+			error: function (responseData, textStatus, errorThrown) {
+				alert(JSON.stringify(responseData));
+				document.getElementById("showresulthere").innerHTML = "ERROR"
+			}
+		});
+	});
 });
 </script>
 </head>
 <body>
-  <div class = "chatWin">
-    <div class = "msgBox">	
-      <div class = "inMsg">This is a test HTML page.</div>
-
-        <div class = "outMsg">It is meant to look like facebook messenger.</div>
-        <div class = "outMsg">I think it looks fine.</div>
-        <p id="showresulthere">I HAVENT CHANGED</p>
-    </div>
-    <div class = "forms">
-      <form>
-        <input id="message" type="text" name="message" placeholder="Type your message...">
-        <button type="button">Send</button>
-      </form>
-    </div>
-  </div>
+	<div class = "chatWin">
+		<div class = "msgBox">	
+			<div class = "inMsg">Hey there! You can ask for help at the gym!</div>
+		</div>
+		<div class = "forms">
+			<form>
+				<input id="message" type="text" name="message" placeholder="Type your message...">
+				<button type="button">Send</button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
