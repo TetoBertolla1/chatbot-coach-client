@@ -59,16 +59,3 @@ button {
 	background: #0084ff;
 	color: #fff;
 }
-
-.inMsg + .outMsg {
-	border-bottom-right-radius: 5px;
-}
-
-.outMsg + .outMsg {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-
-.outMsg:last-of-type {
-	border-bottom-right-radius: 30px;
-}
