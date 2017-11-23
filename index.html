@@ -8,18 +8,22 @@
 	<title>Live Chat - User Interface</title>
 	
 	    <!-- Bootstrap ( Framework for css ) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    
+   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrapV4.css">
     
 	    <!-- Bootstrap ( Framework for js ) -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" ></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> -->
+    <script src="js/jquery.js"></script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" ></script>-->
+    <script src="js/popper.js" ></script>
+   <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>-->
+    <script src="js/bootstrap_min.js"></script>
         <!-- Personal CSS file -->
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
         <!-- Jquery Framework for JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="js/jquery_min.js"></script>
 
 
 <script>
@@ -38,10 +42,10 @@ function objectifyForm(formArray) {//serialize data function
 
 
 
-$(document).ready(function(){ //chris & Joao contributed
+$(document).ready(function(){ //Joao
 	$("button").click(function(){
 	    
-	    if ($("input").val()==""){
+	    if ($("input").val()==""){//this dont let the user input nothing to the server
 	        alert("Please type a message before you send")
 	        
 	        
@@ -49,7 +53,7 @@ $(document).ready(function(){ //chris & Joao contributed
 	    
 	        $(".msgBox").append("<div class = 'outMsg'>" + objectifyForm($("form").serializeArray()).message + "</div>"); //this will append the data input on input element on web enviroment inside the div element
 	    
-	    
+	        //chris & Joao contribute
 	        $.ajax({ // this ajax(XMLHttpRequest) will send the data inputed to the server made in python and then handle that data
 	            type: "POST", //type of request
 	            url: ("http://" + self.location.hostname + ":8000"), // the resquest will be send to this address
@@ -142,7 +146,7 @@ $(document).ready(function(){ //chris & Joao contributed
 	<div  style="overflow-y: scroll;"  class = "chatWin">
 		<div class = "msgBox">
 			<div class = "inMsg">Hey there! You can ask me for
-help at the gym! Any Doubt you have <label>Help button</label>Help button </div>
+help at the gym! Any Doubt you have <label>Help button </label>Help button </div>
 		</div>
 	</div>
 		<div align="center" >
