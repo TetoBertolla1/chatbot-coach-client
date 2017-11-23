@@ -52,24 +52,35 @@ function objectifyForm(formArray) {//serialize data function
 
 
 $(document).ready(function(){ //Joao
+    
+    
+    //this will give the Keycode on browser console,is needed for the event bellow
+    document.addEventListener("keydown", function(event) { //Joao
+        //console.log(event.which);
+    });
 
-        $("form").bind("keypress", function(e) {
+
+
+    //This will cancel the form action , cancel the request for the url redirection
+    $("form").submit(function(e) { //Joao
+    e.preventDefault();
+    });
+    
+    
+        //This will trigger the function then pressed the key ENTER inside form element ( because we cancel the ENTER function )
+        $("form").bind("keypress", function(e) { //Joao
             
-            if (e.keyCode == 13) {
-                
-                return false;
+        if (e.keyCode == 13)
+            {
+             click_e();
             }
         });
 
 
 
 
-
-
-
-
-	$("button").click(function (){
-	    
+function click_e(){ //Joao
+    
 	    if ($("input").val()==""){//this dont let the user input nothing to the server
 	        alert("Please type a message before you send")
 	        
@@ -104,6 +115,16 @@ $(document).ready(function(){ //Joao
 	            }
 	        });
 	    }
+    
+    
+    
+}
+
+
+
+	$("button").click(function (){
+	    
+	    click_e();
 		
 	});
 	
@@ -197,6 +218,7 @@ help at the gym! Any Doubt you have <label>Help button </label>Help button </div
      </p>
      <p>Example: <br># I want to train my biceps<br>
      # What do I need to get a beautiful biceps arms ?</p>
+     <p>........</p>
       </div>
       <div class="modal-footer">
         <label type="button" class="btn btn-primary" data-dismiss="modal">OK</label>
