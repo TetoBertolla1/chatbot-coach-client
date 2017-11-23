@@ -104,7 +104,12 @@ function click_e(){ //Joao
 	                $("form").find("input[type=text], textarea").val(""); // this will empty the input element
 	                $(".msgBox").append("<div class = 'inMsg'>" + value + "</div>"); // this will put the value of the json file received and put inside the div and then creates the conversation between the client/server
 	                
-	                $(".chatWin").animate({scrollTop: $(".chatWin").height()  }, 300);
+	                $(function () { //this function in scroll automatically after a successful request
+	                    var element = $('.chatWin');
+	                    var height = element[0].scrollHeight;
+	                    element.scrollTop(height);
+	                    
+	                });
 	                
 	                
 	    
