@@ -24,8 +24,16 @@
         <!-- Jquery Framework for JavaScript -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     <script src="js/jquery_min.js"></script>
-
-
+    
+    
+    
+<!-- Pure JS to cancel keys from keyboard in this case cancel the ENTER key ,This create a event with the purpose to cancel the key using 3 types of identification of the ENTER key on keyboards, if the key is pressed the event will return false
+<script type="text/javascript">
+window.addEventListener('keydown',function(e){
+    if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13)
+    {if(e.target.nodeName=='INPUT'&&e.target.type=='text')
+    {e.preventDefault();return false;}}},true);
+</script>-->
 <script>
 //chris
 function objectifyForm(formArray) {//serialize data function
