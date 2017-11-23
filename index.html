@@ -9,6 +9,9 @@
 	
 	    <!-- Bootstrap ( Framework for css ) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    
+    
+	    <!-- Bootstrap ( Framework for js ) -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
@@ -35,9 +38,8 @@ function objectifyForm(formArray) {//serialize data function
 
 
 
-$(document).ready(function(){ //
+$(document).ready(function(){ //chris & Joao contributed
 	$("button").click(function(){
-	    console.log($("input").val())
 	    
 	    if ($("input").val()==""){
 	        alert("Please type a message before you send")
@@ -61,7 +63,10 @@ $(document).ready(function(){ //
 	                var value = json.message; // this will grab the value on the json file
 	                $("form").find("input[type=text], textarea").val(""); // this will empty the input element
 	                $(".msgBox").append("<div class = 'inMsg'>" + value + "</div>"); // this will put the value of the json file received and put inside the div and then creates the conversation between the client/server
-	                 $(".msgBox").scrollTo(0,document.body.scrollHeight);
+	                
+	                $(".chatWin").animate({scrollTop: $(".chatWin").height()  }, 300);
+	                
+	                
 	    
 	            },
 	            error: function(responseData, textStatus, errorThrown) { // this handle error if accour
@@ -137,7 +142,7 @@ $(document).ready(function(){ //
 	<div  style="overflow-y: scroll;"  class = "chatWin">
 		<div class = "msgBox">
 			<div class = "inMsg">Hey there! You can ask me for
-help at the gym!</div>
+help at the gym! Any Doubt you have <label>Help button</label>Help button </div>
 		</div>
 	</div>
 		<div align="center" >
@@ -147,7 +152,7 @@ help at the gym!</div>
 </label>--><label type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalToHelpUser">Help!
 </label>
 			    
-				<input  id="message" type="text" name="message" placeholder="Type your message..."><button class="btn btn-primary" type="button">Send</button>
+				<input autocomplete="off"  id="message" type="text" name="message" placeholder="Type your message..."><button class="btn btn-primary" type="button">Send</button>
 			</form>
 		</div>
 		
