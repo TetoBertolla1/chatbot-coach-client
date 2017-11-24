@@ -2,8 +2,10 @@
 <html lang="en">
     
 <head>
+    <!-- Joao Maia -->
+    <!-- scale the width to fit the device that the page is load -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Joao Maia -->
+
 	<meta charset="UTF-8">
 	<title>Live Chat - User Interface</title>
 	
@@ -28,7 +30,7 @@
     
     
 <!-- Pure JS to cancel keys from keyboard in this case cancel the ENTER key ,This create a event with the purpose to cancel the key using 3 types of identification of the ENTER key on keyboards, if the key is pressed the event will return false;
-    In Jquery exist a better/easy/smaller way to do it
+    In Jquery exist a better/easy/smaller way to do it;
 <script type="text/javascript">
 window.addEventListener('keydown',function(e){
     if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13)
@@ -89,7 +91,7 @@ function click_e(){ //Joao
 	    
 	        $(".msgBox").append("<div class = 'outMsg'>" + objectifyForm($("form").serializeArray()).message + "</div>"); //this will append the data input on input element on web enviroment inside the div element
 	    
-	        //chris & Joao contribute
+	        //Joao & chris  contribute
 	        $.ajax({ // this ajax(XMLHttpRequest) will send the data inputed to the server made in python and then handle that data
 	            type: "POST", //type of request
 	            url: ("http://" + self.location.hostname + ":8000"), // the resquest will be send to this address
@@ -104,7 +106,7 @@ function click_e(){ //Joao
 	                $("form").find("input[type=text], textarea").val(""); // this will empty the input element
 	                $(".msgBox").append("<div class = 'inMsg'>" + value + "</div>"); // this will put the value of the json file received and put inside the div and then creates the conversation between the client/server
 	                
-	                $(function () { //this function in scroll automatically after a successful request
+	                $(function () { //this function will go scroll automatically after a successful request (go to the last(max) scroll height avaiable)
 	                    var element = $('.chatWin');
 	                    var height = element[0].scrollHeight;
 	                    element.scrollTop(height);
