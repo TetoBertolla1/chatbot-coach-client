@@ -1,6 +1,8 @@
-# Gym Coach ChatBot Server
+# Gym Coach ChatBot Client
 Plan:
 - [X] Dockerfile
-- [ ] HTTP page
-- [ ] Sweet CSS tho
-- [ ] JS file to handle requests from server
+- [X] HTTP page
+- [X] Sweet CSS tho
+- [X] JS file to handle requests from server
+- [X] Improvements on User Interface quality
+- [X] Organize everything professionally
